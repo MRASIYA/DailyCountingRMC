@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com https://cdnjs.cloudflare.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' http://localhost:* https://localhost:*;">
+    <title>Daily Counting - Inventory Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .main-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            animation: slideIn 0.8s ease-out;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero-title {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            font-weight: bold;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .auto-save-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            border-radius: 50px;
+            animation: fadeInScale 0.3s ease-out;
+        }
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .form-container {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: formGlow 2s ease-in-out infinite alternate;
+        }
+        @keyframes formGlow {
+            from {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            }
+            to {
+                box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            }
+        }
+        .custom-button {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .custom-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(40, 167, 69, 0.4);
+            background: linear-gradient(45deg, #34ce57, #2dd4aa);
+        }
+        .download-button {
+            background: linear-gradient(45deg, #007bff, #6f42c1);
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 123, 255, 0.4);
+            background: linear-gradient(45deg, #0056b3, #5a32a3);
+        }
+        .info-card {
+            background: linear-gradient(145deg, #e3f2fd, #bbdefb);
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.1);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+        .table-container {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: tableSlideUp 0.6s ease-out 0.3s both;
+        }
+        @keyframes tableSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .table th {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .table tbody tr:hover {
+            background: linear-gradient(45deg, #f8f9ff, #fff8f9);
+            transform: scale(1.01);
+            transition: all 0.2s ease;
+        }
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+        .offline-notice {
+            background: #ff6b6b;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Auto-save indicator -->
+    <div id="auto-save-indicator" class="auto-save-indicator notification is-success is-hidden">
+        <span id="save-status">✓ Saved locally</span>
+    </div>
+
+    <!-- Offline notice -->
+    <div id="offline-notice" class="offline-notice">
+        <i class="fas fa-wifi"></i> Offline Mode - Data will be saved locally
+    </div>
+
+    <section class="section">
+        <div class="container main-container">
+            <div class="has-text-centered" style="padding: 30px;">
+                <h1 class="hero-title floating-icon">
+                    <i class="fas fa-clipboard-list"></i> Daily Counting
+                </h1>
+                <p class="subtitle glow-text" style="font-size: 1.3rem; color: #666;">
+                    <i class="fas fa-magic"></i> Smart Inventory Management System
+                </p>
+                <p class="has-text-grey">
+                    <i class="fas fa-save"></i> Mobile App for Daily Counting
+                </p>
+            </div>
+
+            <div class="form-container">
+                <form id="transaction-form">
+                <div class="field">
+                    <label class="label">Material</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="material" id="material-select">
+                                <option value="">Select a material...</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Transaction Type</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="transaction_type">
+                                <option value="Issues">Issues (→ Issued Column)</option>
+                                <option value="Received">Received (→ Received Column)</option>
+                                <option value="Return">Return (→ Return Column)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Quantity</label>
+                    <div class="control">
+                        <input class="input" type="number" step="any" name="quantity" required>
+                    </div>
+                </div>
+
+                <div class="field is-grouped is-grouped-centered">
+                    <div class="control">
+                        <button class="button custom-button is-large" type="submit">
+                            <span class="icon">
+                                <i class="fas fa-plus-circle"></i>
+                            </span>
+                            <span>ADD TO DAILY COUNTING</span>
+                        </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+
+            <!-- Information about where data is saved -->
+            <div class="notification info-card">
+                <p><strong><i class="fas fa-info-circle"></i> Local Data Storage:</strong></p>
+                <p>Transactions are saved locally on your device and can be synced later:</p>
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <p><i class="fas fa-arrow-right has-text-success"></i> <strong>Received</strong> → Received Column</p>
+                    </div>
+                    <div class="column">
+                        <p><i class="fas fa-arrow-right has-text-danger"></i> <strong>Issued</strong> → Issued Column</p>
+                    </div>
+                    <div class="column">
+                        <p><i class="fas fa-arrow-right has-text-warning"></i> <strong>Return</strong> → Return Column</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="subtitle glow-text has-text-centered">
+                <i class="fas fa-chart-bar"></i> Recent Transactions
+            </h2>
+            <div class="table-container">
+                <table class="table is-bordered is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>Material</th>
+                        <th>Type</th>
+                        <th>Quantity</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody id="transactions-table-body">
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <script src="cordova.js"></script>
+    <script>
+        // Sample data for offline mode
+        const sampleMaterials = [
+            { code: 'MAT001', name: 'Steel Rod 12mm' },
+            { code: 'MAT002', name: 'Cement Bag 50kg' },
+            { code: 'MAT003', name: 'Sand (per m³)' },
+            { code: 'MAT004', name: 'Brick (per piece)' },
+            { code: 'MAT005', name: 'Paint Bucket 20L' }
+        ];
+
+        let transactions = JSON.parse(localStorage.getItem('dailyCountingTransactions') || '[]');
+
+        function loadMaterials() {
+            const selectElement = document.getElementById('material-select');
+            sampleMaterials.forEach(material => {
+                const option = document.createElement('option');
+                option.value = `${material.code}|${material.name}`;
+                option.textContent = material.name;
+                selectElement.appendChild(option);
+            });
+        }
+
+        function loadTransactions() {
+            const tbodyElement = document.getElementById('transactions-table-body');
+            tbodyElement.innerHTML = '';
+            
+            transactions.slice(-10).reverse().forEach(transaction => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${transaction.material_name}</strong></td>
+                    <td class="${
+                        transaction.type === 'Received' ? 'has-text-success' :
+                        transaction.type === 'Issues' ? 'has-text-danger' : 'has-text-warning'
+                    }">${transaction.type}</td>
+                    <td><strong>${transaction.quantity}</strong></td>
+                    <td>${new Date(transaction.timestamp).toLocaleDateString()} ${new Date(transaction.timestamp).toLocaleTimeString()}</td>
+                `;
+                tbodyElement.appendChild(row);
+            });
+        }
+
+        document.getElementById('transaction-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const materialSelection = formData.get('material');
+            const transactionType = formData.get('transaction_type');
+            const quantity = parseFloat(formData.get('quantity'));
+            
+            if (!materialSelection || !quantity) {
+                alert('Please fill all fields');
+                return;
+            }
+            
+            const [materialCode, materialName] = materialSelection.split('|');
+            
+            const transaction = {
+                material_code: materialCode,
+                material_name: materialName,
+                type: transactionType,
+                quantity: quantity,
+                timestamp: new Date().toISOString()
+            };
+            
+            transactions.push(transaction);
+            localStorage.setItem('dailyCountingTransactions', JSON.stringify(transactions));
+            
+            // Show save indicator
+            const indicator = document.getElementById('auto-save-indicator');
+            const status = document.getElementById('save-status');
+            
+            status.innerHTML = '💾 Saving locally...';
+            indicator.className = 'auto-save-indicator notification is-warning';
+            indicator.classList.remove('is-hidden');
+            
+            setTimeout(function() {
+                status.innerHTML = '✓ Saved locally';
+                indicator.className = 'auto-save-indicator notification is-success';
+                
+                setTimeout(function() {
+                    indicator.classList.add('is-hidden');
+                }, 3000);
+            }, 1000);
+            
+            // Clear form
+            e.target.reset();
+            
+            // Reload transactions
+            loadTransactions();
+        });
+
+        document.addEventListener('deviceready', function() {
+            console.log('Cordova is ready');
+            loadMaterials();
+            loadTransactions();
+        }, false);
+
+        // Fallback for browser testing
+        if (typeof cordova === 'undefined') {
+            window.addEventListener('load', function() {
+                loadMaterials();
+                loadTransactions();
+            });
+        }
+    </script>
+</body>
+</html>
