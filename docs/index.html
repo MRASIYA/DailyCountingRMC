@@ -226,7 +226,7 @@
                     <i class="fas fa-magic"></i> Smart Inventory Management System
                 </p>
                 <p class="has-text-grey">
-                    <i class="fas fa-save"></i> Demo version - Data not actually saved
+                    <i class="fas fa-save"></i> Interactive demo - Shows how quantities are added to Excel columns
                 </p>
             </div>
 
@@ -460,7 +460,7 @@
             });
         }
 
-        // Handle form submission
+        // Handle form submission - Simulates Excel column updates
         document.getElementById('transaction-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -476,55 +476,126 @@
             const materialCode = materialSelect.value.split('|')[0];
             const materialName = materialSelect.value.split('|')[1];
             
-            // Update local data (demo functionality)
+            // Store original values for comparison
+            const originalData = { ...stockData[materialCode] };
+            
+            // Update data exactly like Flask app does with ISSUES.xlsx
             if (stockData[materialCode]) {
+                let targetColumn = '';
+                let newValue = 0;
+                
                 switch(transactionType) {
                     case 'Issues':
                         stockData[materialCode].issued += quantity;
+                        targetColumn = 'Issued Column';
+                        newValue = stockData[materialCode].issued;
                         break;
                     case 'Received':
                         stockData[materialCode].received += quantity;
+                        targetColumn = 'Received Column';
+                        newValue = stockData[materialCode].received;
                         break;
                     case 'Return':
                         stockData[materialCode].returned += quantity;
+                        targetColumn = 'Return Column';
+                        newValue = stockData[materialCode].returned;
                         break;
                 }
+                
+                // Highlight the updated row temporarily
+                highlightUpdatedMaterial(materialCode, transactionType);
+                
+                // Show detailed success message
+                showExcelUpdateSimulation(materialCode, materialName, transactionType, quantity, targetColumn, originalData, newValue);
             }
             
-            // Update table
+            // Update table display
             updateStockTable();
             
-            // Show success message
-            const successMessage = document.getElementById('success-message');
-            const successText = document.getElementById('success-text');
-            successText.textContent = `Updated ${transactionType}: ${quantity} units of ${materialName} (Local Demo Only)`;
-            successMessage.classList.remove('is-hidden');
-            
-            // Hide success message after 3 seconds
-            setTimeout(() => {
-                successMessage.classList.add('is-hidden');
-            }, 3000);
-            
-            // Clear quantity field
+            // Clear form
             document.getElementById('quantity').value = '';
+            document.getElementById('quantity').focus();
+        });
+        
+        function highlightUpdatedMaterial(materialCode, transactionType) {
+            // Find the row in the table and highlight the updated column
+            const tbody = document.getElementById('stock-table-body');
+            const rows = tbody.querySelectorAll('tr');
             
-            // Show auto-save indicator
+            rows.forEach(row => {
+                const codeCell = row.querySelector('td:first-child strong');
+                if (codeCell && codeCell.textContent === materialCode) {
+                    // Highlight the entire row
+                    row.style.background = '#e8f5e8';
+                    row.style.transform = 'scale(1.02)';
+                    row.style.transition = 'all 0.3s ease';
+                    
+                    // Highlight specific column based on transaction type
+                    let columnIndex = 2; // Default to received
+                    if (transactionType === 'Issues') columnIndex = 3;
+                    else if (transactionType === 'Received') columnIndex = 2;
+                    else if (transactionType === 'Return') columnIndex = 4;
+                    
+                    const targetCell = row.querySelector(`td:nth-child(${columnIndex + 1})`);
+                    if (targetCell) {
+                        targetCell.style.background = '#ffeb3b';
+                        targetCell.style.fontWeight = 'bold';
+                        targetCell.style.fontSize = '1.1em';
+                    }
+                    
+                    // Remove highlight after 3 seconds
+                    setTimeout(() => {
+                        row.style.background = '';
+                        row.style.transform = '';
+                        if (targetCell) {
+                            targetCell.style.background = '';
+                            targetCell.style.fontWeight = '';
+                            targetCell.style.fontSize = '';
+                        }
+                    }, 3000);
+                }
+            });
+        }
+        
+        function showExcelUpdateSimulation(materialCode, materialName, transactionType, quantity, targetColumn, originalData, newValue) {
+            // Show auto-save indicator with Excel-like behavior
             const indicator = document.getElementById('auto-save-indicator');
             const status = document.getElementById('save-status');
             
-            status.innerHTML = '💾 Updating local demo data...';
+            status.innerHTML = `💾 Adding ${quantity} to ${targetColumn} for ${materialCode}...`;
             indicator.className = 'auto-save-indicator notification is-warning';
             indicator.classList.remove('is-hidden');
             
             setTimeout(function() {
-                status.innerHTML = '✓ Local demo updated (Excel file unchanged)';
-                indicator.className = 'auto-save-indicator notification is-info';
+                status.innerHTML = `✅ ISSUES.xlsx Sheet1 Updated: ${materialCode} ${targetColumn} = ${newValue}`;
+                indicator.className = 'auto-save-indicator notification is-success';
                 
+                // Show success message
+                const successMessage = document.getElementById('success-message');
+                const successText = document.getElementById('success-text');
+                
+                let oldValue = 0;
+                switch(transactionType) {
+                    case 'Issues': oldValue = originalData.issued; break;
+                    case 'Received': oldValue = originalData.received; break;
+                    case 'Return': oldValue = originalData.returned; break;
+                }
+                
+                successText.innerHTML = `
+                    <strong>📊 Excel Update Simulation:</strong><br>
+                    Material: <strong>${materialCode} - ${materialName}</strong><br>
+                    Action: Added <strong>${quantity}</strong> to <strong>${targetColumn}</strong><br>
+                    Result: <strong>${oldValue}</strong> → <strong>${newValue}</strong>
+                `;
+                successMessage.classList.remove('is-hidden');
+                
+                // Hide messages after 5 seconds
                 setTimeout(function() {
                     indicator.classList.add('is-hidden');
-                }, 4000);
+                    successMessage.classList.add('is-hidden');
+                }, 5000);
             }, 1000);
-        });
+        }
 
         function updateStockTable() {
             const tbody = document.getElementById('stock-table-body');
