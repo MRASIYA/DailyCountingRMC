@@ -1,0 +1,986 @@
+[
+  {
+    "code": "11067431",
+    "name": "SALT - FLOW"
+  },
+  {
+    "code": "11061702",
+    "name": "WHITE SUGAR"
+  },
+  {
+    "code": "11002301",
+    "name": "MONOSODIUM GLUTAMATE"
+  },
+  {
+    "code": "67548375",
+    "name": "ONION POWDER"
+  },
+  {
+    "code": "11067473",
+    "name": "CITRIC ACID MONOHYDRATE (FOOD GRADE)"
+  },
+  {
+    "code": "11002242",
+    "name": "SPICE CELERY POWDER"
+  },
+  {
+    "code": "67550393",
+    "name": "GARLIC POWDER"
+  },
+  {
+    "code": "67548417",
+    "name": "WHITE PEPPER"
+  },
+  {
+    "code": "11002253",
+    "name": "SPICE TURMERIC POWDER"
+  },
+  {
+    "code": "11061729",
+    "name": "I+G SODIUM 5'RIBONUCLEOTID"
+  },
+  {
+    "code": "11827361",
+    "name": "DRIED CORN STARCH 5% MOISTURE-SSL"
+  },
+  {
+    "code": "11061758",
+    "name": "CORN STARCH - IMPORT"
+  },
+  {
+    "code": "11067112",
+    "name": "YEAST EXTR. MICROGRANUL. STANDARD 18% SA"
+  },
+  {
+    "code": "67548424",
+    "name": "SOYA SAUCE POWDER"
+  },
+  {
+    "code": "11061732",
+    "name": "COOKED CHICKEN POWDER IDF"
+  },
+  {
+    "code": "11065981",
+    "name": "FLAVOUR ULL4064H CHICKEN"
+  },
+  {
+    "code": "11066541",
+    "name": "INFAT 50"
+  },
+  {
+    "code": "11068103",
+    "name": "FRYTOL FAT (KNORR SOFT FAT)"
+  },
+  {
+    "code": "68529522",
+    "name": "TURMERIC OLEORESIN"
+  },
+  {
+    "code": "69781265",
+    "name": "SPICE OLEORESIN"
+  },
+  {
+    "code": "69781147",
+    "name": "CURRY SPICE POWDER HL"
+  },
+  {
+    "code": "11067431",
+    "name": "SALT (CITY SALT)"
+  },
+  {
+    "code": "11000448",
+    "name": "SALT (WELLASSA)"
+  },
+  {
+    "code": "11000448",
+    "name": "SALT (WIS)"
+  },
+  {
+    "code": "11000448",
+    "name": "SALT (ST ANNE'S)"
+  },
+  {
+    "code": "11063712",
+    "name": "DEHYDRATED MALDIVE FISH"
+  },
+  {
+    "code": "67641184",
+    "name": "MALDIVE FISH POWDER"
+  },
+  {
+    "code": "11055492",
+    "name": "SILICA PRECIPITATED"
+  },
+  {
+    "code": "67548282",
+    "name": "PAPRIKA EXTRACT OIL SOLUBLE"
+  },
+  {
+    "code": "11058892",
+    "name": "SPICE ROASTED CHILLI POWDER"
+  },
+  {
+    "code": "11063692",
+    "name": "SMOKE FLAVOR 508386 TP0599"
+  },
+  {
+    "code": "11003072",
+    "name": "MALTO DEXTRINE"
+  },
+  {
+    "code": "11068106",
+    "name": "HUL SPICE MIX 790"
+  },
+  {
+    "code": "11068122",
+    "name": "ROSE PETAL SD FLAVOR 452746"
+  },
+  {
+    "code": "11068110",
+    "name": "FLAVOUR LEMONGRASS860662 TD0990B FIRMENI"
+  },
+  {
+    "code": "67791483",
+    "name": "HIGH NUCLEOTIDE YEAST EXTRACT"
+  },
+  {
+    "code": "11068121",
+    "name": "HUL SPICE MIX 821E"
+  },
+  {
+    "code": "11068105",
+    "name": "OLEORESIN CHILI 4010000026"
+  },
+  {
+    "code": "11068104",
+    "name": "BLACK PEPPER POWDER 32 MESH"
+  },
+  {
+    "code": "69628041",
+    "name": "Tapioca Starch E1412 14% moisture (BIND T)"
+  },
+  {
+    "code": "11057361",
+    "name": "Sodium bicarbonate,NaHCO3, food grade"
+  },
+  {
+    "code": "94010257",
+    "name": "KN CHICK CUBE PC RMC (280gx10G)_0024"
+  },
+  {
+    "code": "11511490",
+    "name": "LAMI KNORR CUBE 10G ALU FOIL 8 MIC-ALUMINIUM COIL"
+  },
+  {
+    "code": "68441968",
+    "name": "PLTUB KN CUBES PC PET NEW 280G-BOTTLE"
+  },
+  {
+    "code": "68441966",
+    "name": "PLID KN CUBES PC PP 280G -LID"
+  },
+  {
+    "code": "64872135",
+    "name": "FLB KN CUBES PC 280G REG2024"
+  },
+  {
+    "code": "68441965",
+    "name": "TAMPER LB KNORR CUBES PC 280G-SMALL STICKER"
+  },
+  {
+    "code": "69713625",
+    "name": "CLD KN CUBES PC 280G X 24 RMC 2021 NEW ULCL"
+  },
+  {
+    "code": "68441969",
+    "name": "PH PART KNORR CUBES 280G X 24-CLD SEPARATER"
+  },
+  {
+    "code": "68441963",
+    "name": "LAYER SEP KNORR CUBES 280G X 24 -CLD SEPERATOR"
+  },
+  {
+    "code": "11490701",
+    "name": "POLY /CLEAR 20 W 30 H 3 300G -GAUGE-POLYBAG"
+  },
+  {
+    "code": "67998286",
+    "name": "FLEX USL BOPP TAPE 3 INCH 50M 3P"
+  },
+  {
+    "code": "67998292",
+    "name": "FLEX USL BOPP TAPE 3 INCH 1000M 3P"
+  },
+  {
+    "code": "94012468",
+    "name": "Handy Pack Chicken Cube 120G X 48"
+  },
+  {
+    "code": "64344224",
+    "name": "PLTUB KN CUBES PC PET 102G-120G"
+  },
+  {
+    "code": "64872138",
+    "name": "LBL KN CHICK CUBES PC 120G REG2024"
+  },
+  {
+    "code": "64344223",
+    "name": "CLD KN CHICK CUBES PC 120G X 48 URMC"
+  },
+  {
+    "code": "64344225",
+    "name": "PHOLE PART KN CUBES PC 102G-120G"
+  },
+  {
+    "code": "64344220",
+    "name": "LASEP KN CUBES PC 102G-120G"
+  },
+  {
+    "code": "64344217",
+    "name": "PLID KN CHICK CUBES PC 120G"
+  },
+  {
+    "code": "64893688",
+    "name": "SFG WADED LID KNORR CUBES 96G-120G"
+  },
+  {
+    "code": "94012905",
+    "name": "Press Cube"
+  },
+  {
+    "code": "64781795",
+    "name": "CLD KN PRESS CUBES PC 96G X 40 URMC"
+  },
+  {
+    "code": "64781792",
+    "name": "VER SEPARATOR KN CUBES PC 96G URMC"
+  },
+  {
+    "code": "64781796",
+    "name": "LAYER SEP KN CUBES PC 96G URMC"
+  },
+  {
+    "code": "64781794",
+    "name": "PLTUB KN PRESS CUBES PC PET 96G"
+  },
+  {
+    "code": "64781790",
+    "name": "LBL KN PRESS CUBES PC 96G URMC"
+  },
+  {
+    "code": "94012262",
+    "name": "Veg Curry cube (PC)"
+  },
+  {
+    "code": "68590192",
+    "name": "PLTUB KN CUBES PC PET NEW 280G"
+  },
+  {
+    "code": "62752759",
+    "name": "FLB KN VEG CUBES PC 238G NEW ULCL"
+  },
+  {
+    "code": "62760450",
+    "name": "TAMPER LB KNORR CURRY CUBES PC 238G"
+  },
+  {
+    "code": "62752762",
+    "name": "CLD KN VEG CUBES PC 238G X 24 NEW ULCL"
+  },
+  {
+    "code": "62752761",
+    "name": "PLID KN VEG CUBES PC 238G"
+  },
+  {
+    "code": "94012791",
+    "name": "Knorr Seasoning Handy Pack MT x 120g"
+  },
+  {
+    "code": "64411783",
+    "name": "CLD KN CHICK CUBES PC 120G X 24 MT URMC"
+  },
+  {
+    "code": "64411784",
+    "name": "PHOLE PART KN CUBES PC 120G X 24 MT"
+  },
+  {
+    "code": "64411785",
+    "name": "LASEP KN CUBES PC 120G X 24 MT"
+  },
+  {
+    "code": "94010254",
+    "name": "CHICK CUBES VD RMC (2 x 10G)"
+  },
+  {
+    "code": "69713618",
+    "name": "CART KN CUBE SHELL BOX 20G RMC 2022 NEW ULCL"
+  },
+  {
+    "code": "64872143",
+    "name": "CART KN CUBE SHELL BOX 20G REG2024"
+  },
+  {
+    "code": "11490700",
+    "name": "GUM/CHEMIFIX (W)- 4KG"
+  },
+  {
+    "code": "11490699",
+    "name": "BOPP OVER WRAP FOR SHELL BOX - 30MICRONS"
+  },
+  {
+    "code": "69713627",
+    "name": "CART KN CUBE VD 20GX15 RMC 2022 NEW ULCL"
+  },
+  {
+    "code": "64872144",
+    "name": "CART KN CUBE VD 20GX15 REG2024"
+  },
+  {
+    "code": "69713617",
+    "name": "CLD KN CUBES VD 20G X 360 NEW ULCL"
+  },
+  {
+    "code": "94010256",
+    "name": "Knorr Chicken Single Cube 10G (Strand)"
+  },
+  {
+    "code": "68744068",
+    "name": "CLD KN CHICK CUBES 10G X 576 RMC"
+  },
+  {
+    "code": "68880148",
+    "name": "LAMI KNORR CUBES 10G FLOW WRAP RMC 2022"
+  },
+  {
+    "code": "94010255",
+    "name": "CHICK CUBES P/P RMC 60GM_0096"
+  },
+  {
+    "code": "67567207",
+    "name": "FLEX BOPP OVERWRAPPER 60G 30MIC"
+  },
+  {
+    "code": "69713619",
+    "name": "CART KN CUBES P/P 60G RMC 2022"
+  },
+  {
+    "code": "64872137",
+    "name": "CART KN CUBES P/P 60G REG2024"
+  },
+  {
+    "code": "68784034",
+    "name": "LAYSEP KN PANTRY PACK 60g x 96"
+  },
+  {
+    "code": "68784036",
+    "name": "PAD PART KN PANTRY PACK 60g x 96"
+  },
+  {
+    "code": "69713623",
+    "name": "CLD KN CUBE P/P 60g x 96 NEW ULCL"
+  },
+  {
+    "code": "94010565",
+    "name": "CHICK CUBES P/P RMC 60GM_0096 - EXPORT"
+  },
+  {
+    "code": "68386279",
+    "name": "FLEX BOPP OVERWRAPPER 60G 30MIC (Export)"
+  },
+  {
+    "code": "68501610",
+    "name": "LAYSEP KN PANTRY PACK 60g x 96  (Export)"
+  },
+  {
+    "code": "68794566",
+    "name": "CLD KN CUBE P/P 60g x 96 RMC 2021 (Export)"
+  },
+  {
+    "code": "68939930",
+    "name": "CART KN CUBES 60G EXPORT RMC 2022 V2"
+  },
+  {
+    "code": "94010258",
+    "name": "Knorr Single Cube 280g (Carton)"
+  },
+  {
+    "code": "68471141",
+    "name": "CRPART REV KN CUBES 10G X 28 X 24"
+  },
+  {
+    "code": "68471138",
+    "name": "PADPART REV KN CUBES 10G X 28 X 24"
+  },
+  {
+    "code": "68737941",
+    "name": "CLD KN CUBES 280G X 24 RMC 2021"
+  },
+  {
+    "code": "68737939",
+    "name": "CART KN CUBES 10G X 28 RMC 2021"
+  },
+  {
+    "code": "68471139",
+    "name": "TAMPER LB ARARAT KN CUBES 10G X 28"
+  },
+  {
+    "code": "68695611",
+    "name": "TAMPER LB ARARAT KN CUBES 10G X 28"
+  },
+  {
+    "code": "94010325",
+    "name": "KN CHICK CUBE CARTON (10g x 15)"
+  },
+  {
+    "code": "69663057",
+    "name": "CART KN CUBES 10G X 15 RMC 2022"
+  },
+  {
+    "code": "69663059",
+    "name": "CRPART KNORR CUBES 150G X 24"
+  },
+  {
+    "code": "69663058",
+    "name": "PART KNORR CUBES 150G X 24"
+  },
+  {
+    "code": "69663055",
+    "name": "CLD KN CUBES 150G X 24 RMC 2022"
+  },
+  {
+    "code": "94011735",
+    "name": "KNORR VEG CURRY CUBE 20G"
+  },
+  {
+    "code": "62720910",
+    "name": "CART KN CUBE VD 17GX15 NEW ULCL"
+  },
+  {
+    "code": "69713624",
+    "name": "CLD KN CUBE VD 17GX15 NEW ULCL"
+  },
+  {
+    "code": "69780142",
+    "name": "LAMI KN CUBE 8.5G WRAPPER"
+  },
+  {
+    "code": "69713621",
+    "name": "CART KN VEG CUBE SHELL BOX 17G NEW ULCL"
+  },
+  {
+    "code": "69788556",
+    "name": "FLEX BOPP OVERWRAPPER 17G 30MIC"
+  },
+  {
+    "code": "94011438",
+    "name": "KN CSP Pouch 500g"
+  },
+  {
+    "code": "64852690",
+    "name": "LAMI POUCH KN UFS CSP 500G"
+  },
+  {
+    "code": "69672874",
+    "name": "CRPART KN UFS CSP 500G POUCH X 24"
+  },
+  {
+    "code": "69672875",
+    "name": "LASEP KN UFS CSP 500G POUCH X 24"
+  },
+  {
+    "code": "69779314",
+    "name": "CLD KN UFS CSP 500G POUCH PACK  NEW ULCL"
+  },
+  {
+    "code": "94013777",
+    "name": "Knor Chick Flavd Ssoning Powder500gx24FS"
+  },
+  {
+    "code": "64852691",
+    "name": "CLD KN CSP 500G X 24 REG2024"
+  },
+  {
+    "code": "64874799",
+    "name": "SFG LBTUB CSP 500G X 24 REG2024"
+  },
+  {
+    "code": "94010488",
+    "name": "MARMITE SMALL 50G"
+  },
+  {
+    "code": "11061724",
+    "name": "MARMITE BULK"
+  },
+  {
+    "code": "68762505",
+    "name": "BOTTLE GLASS MARMITE 50G TAMPER 2021"
+  },
+  {
+    "code": "68762504",
+    "name": "PLID MARMITE 50G TAMPER 2021"
+  },
+  {
+    "code": "11505718",
+    "name": "FLB MARMITE 55GX60 628/2014/USLL RELAUNCH 2014"
+  },
+  {
+    "code": "64872146",
+    "name": "CRT MARMITE 50G URMC 2021 NEW ULCL"
+  },
+  {
+    "code": "69713695",
+    "name": "CLD MARMITE 50G X 60 URMC 2021 NEW ULCL"
+  },
+  {
+    "code": "64928063",
+    "name": "CLD MARMITE 50G X 60 AVURUDU 2025"
+  },
+  {
+    "code": "64928068",
+    "name": "FLB MARMITE 50G AVURUDU 2025"
+  },
+  {
+    "code": "64928060",
+    "name": "CRT MARMITE 50G AVURUDU 2025"
+  },
+  {
+    "code": "94010489",
+    "name": "Marmite Yeast Extract 100g"
+  },
+  {
+    "code": "69713689",
+    "name": "CLD MARMITE 100G X 48 URMC 2021 New Ulcl"
+  },
+  {
+    "code": "68762503",
+    "name": "BOTTLE GLASS MARMITE 100G TAMPER 2021"
+  },
+  {
+    "code": "68762508",
+    "name": "PLID MARMITE 100G TAMPER 2021"
+  },
+  {
+    "code": "11505712",
+    "name": "FLB MARMITE 105G RELAUNCH 2014"
+  },
+  {
+    "code": "64872140",
+    "name": "CRT MARMITE 100G URMC 2021"
+  },
+  {
+    "code": "94013627",
+    "name": "Marmite Yeast Extract 100g"
+  },
+  {
+    "code": "64928066",
+    "name": "CLD MARMITE 100G X 48 AVURUDU 2025"
+  },
+  {
+    "code": "64928061",
+    "name": "FLB MARMITE 100G AVURUDU 2025"
+  },
+  {
+    "code": "64928062",
+    "name": "CRT MARMITE 100G AVURUDU 2025"
+  },
+  {
+    "code": "94010303",
+    "name": "Marmite Yeast Extract 100g"
+  },
+  {
+    "code": "69596310",
+    "name": "CRT MARMITE 100G URMC 2021 OLD DESIGN"
+  },
+  {
+    "code": "69596311",
+    "name": "CLD MARMITE 100G X 48 URMC 2021"
+  },
+  {
+    "code": "94010490",
+    "name": "Marmite Yeast Extract 200g"
+  },
+  {
+    "code": "69713694",
+    "name": "CLD MARMITE 200G X 36 URMC 2021 NEW ULCL"
+  },
+  {
+    "code": "68762507",
+    "name": "BOTTLE GLASS MARMITE 200G TAMPER 2021"
+  },
+  {
+    "code": "68762510",
+    "name": "PLID MARMITE 200G TAMPER 2021"
+  },
+  {
+    "code": "11505714",
+    "name": "FLB MARMITE 210GX36 RELAUNCH 2014"
+  },
+  {
+    "code": "64872147",
+    "name": "CRT MARMITE 200G URMC 2021"
+  },
+  {
+    "code": "94013628",
+    "name": "Marmite Yeast Extract 200g"
+  },
+  {
+    "code": "64928064",
+    "name": "CLD MARMITE 200G X 36 URMC 2021"
+  },
+  {
+    "code": "64928067",
+    "name": "FLB MARMITE 210GX36 RELAUNCH 2014"
+  },
+  {
+    "code": "64928065",
+    "name": "CRT MARMITE 200G URMC 2021"
+  },
+  {
+    "code": "94011180",
+    "name": "Marmite Batta 20g_0144"
+  },
+  {
+    "code": "69601422",
+    "name": "LAMI SPOUT POUCH MARMITE 20G MINI 2022"
+  },
+  {
+    "code": "68196482",
+    "name": "LID SPOUT POUCH MARMITE MINI 20G"
+  },
+  {
+    "code": "68304164",
+    "name": "CART SR MARMITE MINI REV 20G X 12"
+  },
+  {
+    "code": "68304165",
+    "name": "CLD MARMITE MINI REV 20G X 144"
+  },
+  {
+    "code": "68295361",
+    "name": "LASEP MARMITE MINI 20G X 144"
+  },
+  {
+    "code": "94012069",
+    "name": "Marmite Yeast Extract 200g EXPORT"
+  },
+  {
+    "code": "69998456",
+    "name": "CLD MARMITE 200G X 12 NEW ULCL"
+  },
+  {
+    "code": "64376619",
+    "name": "CLD MARMITE 200G X 12 NEW ULCL AW 2024"
+  },
+  {
+    "code": "69998455",
+    "name": "PHOLE PART MARMITE 200G X 12 EXPORT UI"
+  },
+  {
+    "code": "69998451",
+    "name": "FLB MARMITE 200G EXPORT UI"
+  },
+  {
+    "code": "64376613",
+    "name": "BLB MARMITE 200G EXPORT UI AW 2024"
+  },
+  {
+    "code": "94012068",
+    "name": "Marmite Yeast Extract 100g EXPORT"
+  },
+  {
+    "code": "64376621",
+    "name": "CLD MARMITE 100G X 24 EXPORT UI AW 2024"
+  },
+  {
+    "code": "69998450",
+    "name": "PHOLE PART MARMITE100G X 24 EXPORT UI"
+  },
+  {
+    "code": "69998453",
+    "name": "LASEP MARMITE 100G X 24 EXPORT UI"
+  },
+  {
+    "code": "69998461",
+    "name": "FLB MARMITE 100G EXPORT UI"
+  },
+  {
+    "code": "69998460",
+    "name": "BLB MARMITE 100G EXPORT UI"
+  },
+  {
+    "code": "64376612",
+    "name": "BLB MARMITE 100G EXPORT UI AW 2024"
+  },
+  {
+    "code": "94012395",
+    "name": "Marmite Yeast Extract 410g EXPORT"
+  },
+  {
+    "code": "64376615",
+    "name": "CLD MARMITE 410G X 6 EX UI AW 2024"
+  },
+  {
+    "code": "64316583",
+    "name": "HOLE PART MARMITE 410G X 6 EXPORT UI"
+  },
+  {
+    "code": "64316581",
+    "name": "BOTTLE GLASS MARMITE410G EXPORT UI"
+  },
+  {
+    "code": "64316582",
+    "name": "PLID MARMITE 410G EXPORT UI"
+  },
+  {
+    "code": "64316587",
+    "name": "FLB MARMITE 410G EXPORT UI"
+  },
+  {
+    "code": "64376618",
+    "name": "BLB MARMITE 410G EXPORT UI AW 2024"
+  },
+  {
+    "code": "64376617",
+    "name": "TAMPER LBL MARMITE 410G EX UI AW 2024"
+  },
+  {
+    "code": "94012617",
+    "name": "MARMITE OUR MATE 200g Ex"
+  },
+  {
+    "code": "64368840",
+    "name": "CLD OUR MATE 200G X 12 NEW ULCL"
+  },
+  {
+    "code": "64390861",
+    "name": "ID LBL OUR MATE 200G EXPORT UI"
+  },
+  {
+    "code": "64368841",
+    "name": "PLID OUR MATE 200G EXPORT"
+  },
+  {
+    "code": "64368839",
+    "name": "FLB OUR MATE 200G EXPORT UI"
+  },
+  {
+    "code": "64368842",
+    "name": "BLB OUR MATE 200G EXPORT UI"
+  },
+  {
+    "code": "94010494",
+    "name": "Knorr Maldive Fish Powder Mix 8g"
+  },
+  {
+    "code": "69772142",
+    "name": "CLD KMF GT 8G X 576 RMC 2021 NEW ULCL"
+  },
+  {
+    "code": "64872134",
+    "name": "LAMI KMF 8G REG2024"
+  },
+  {
+    "code": "94011481",
+    "name": "KN Chicken Seasoning Pw 7.5g x 576"
+  },
+  {
+    "code": "69772132",
+    "name": "LAMI KNORR SEASONING 7.5G NEW ULCL"
+  },
+  {
+    "code": "69772137",
+    "name": "CLD KNORR SEASONING 7.5G X 576 NEW ULCL"
+  },
+  {
+    "code": "64978945",
+    "name": "LAMI SEASONING POWDER 7.5G REG2024"
+  },
+  {
+    "code": "94012843",
+    "name": "Crispy-FS x 1kg x 6"
+  },
+  {
+    "code": "64402588",
+    "name": "CLD KN CRISPY COATING 1KG X 6 ULCL"
+  },
+  {
+    "code": "64874795",
+    "name": "SFG LBTUB CRISPY COATING 1KG ULCL"
+  },
+  {
+    "code": "94010430",
+    "name": "Knor Chicken Ssoning Pw 1 kg ULCL-FS"
+  },
+  {
+    "code": "69741616",
+    "name": "CLD KN CSP BUTTERFLY URMC 1KG X 6"
+  },
+  {
+    "code": "69741585",
+    "name": "6001-TUB 1KG"
+  },
+  {
+    "code": "64874793",
+    "name": "SFG LBTUB CSP BUTTERFLY 1KG REG2024"
+  },
+  {
+    "code": "68889777",
+    "name": "PLID UFS KN CSP 1KG"
+  },
+  {
+    "code": "68889778",
+    "name": "FLEX BAG UFS KN CSP 1KG"
+  },
+  {
+    "code": "94010431",
+    "name": "Knor Chick Flavd Ssoning Powder 500g -FS"
+  },
+  {
+    "code": "69741620",
+    "name": "CLD KN CSP URMC 500G X 24 NEW ULCL"
+  },
+  {
+    "code": "69741586",
+    "name": "6001-TUB 500 GM NEW ULCL-Modified"
+  },
+  {
+    "code": "68889776",
+    "name": "FLEX BAG UFS KN CSP 500G"
+  },
+  {
+    "code": "94013453",
+    "name": "Knorr Biriyani Mix 500g FS new"
+  },
+  {
+    "code": "64405072",
+    "name": "CLD IML KN BIRIYANI 500G X 24 ULCL"
+  },
+  {
+    "code": "64405145",
+    "name": "SFG LBTUB IML BIRIYANI 500G ULCL"
+  },
+  {
+    "code": "94010433",
+    "name": "Knorr BIRIYANI MIX 500g MT"
+  },
+  {
+    "code": "69741622",
+    "name": "CLD KN BIRIYANI 500G X 24 NEW ULCL"
+  },
+  {
+    "code": "69741590",
+    "name": "SFG LBTUB BIRIYANI 500G X 24 NEW ULCL"
+  },
+  {
+    "code": "94010432",
+    "name": "Knor Cleanco 1 KG"
+  },
+  {
+    "code": "69741621",
+    "name": "CLD KN CSP CLEAN CORE URMC 1KG X 6"
+  },
+  {
+    "code": "69741588",
+    "name": "SFG LBTUB CSP CLEAN 1KG NEW ULCL"
+  },
+  {
+    "code": "64874801",
+    "name": "SFG LBTUB CSP CLEAN 1KG REG2024"
+  },
+  {
+    "code": "68846022",
+    "name": "6001-Clenco 1 kg"
+  },
+  {
+    "code": "94013456",
+    "name": "Knorr Chicken Flav SsoningPowder 500gFS new  IML"
+  },
+  {
+    "code": "64405073",
+    "name": "CLD IML KN CSP 500G X 24 ULCL"
+  },
+  {
+    "code": "64891261",
+    "name": "LAYER SEP UFS KN CSP 500G IML"
+  },
+  {
+    "code": "64405147",
+    "name": "SFG LBTUB IML CSP 500G ULCL"
+  },
+  {
+    "code": "64405071",
+    "name": "PLID IML UFS KN CSP 500G ULCL"
+  },
+  {
+    "code": "64957815",
+    "name": "LAMI POUCH KNORR CSP 500G UFS URMC"
+  },
+  {
+    "code": "94010566",
+    "name": "Knor Chicken Curry Mix 15g MT"
+  },
+  {
+    "code": "69772140",
+    "name": "CLD KN CHICK CURRY 15G X 144 RMC 2021"
+  },
+  {
+    "code": "11490075",
+    "name": "CELLOTAPE 1\"(25MM)"
+  },
+  {
+    "code": "69772138",
+    "name": "LAMI KN CHICK CURRY 15G RMC 2022 NEW ULCL"
+  },
+  {
+    "code": "64872133",
+    "name": "LAMI KN CHICK CURRY 15G REG2024"
+  },
+  {
+    "code": "69772133",
+    "name": "CRT KN CHICK CURRY 15G X 24 NEW ULCL"
+  },
+  {
+    "code": "68794556",
+    "name": "CRT KN CHICK CURRY 15G X 24 RMC 2021"
+  },
+  {
+    "code": "94010567",
+    "name": "Knor Biriyani Mix 20g MT"
+  },
+  {
+    "code": "69772135",
+    "name": "CLD KN BIRIYANI 20G X 144 RMC 2021"
+  },
+  {
+    "code": "64872141",
+    "name": "LAMI KN BIRYANI 20G REG2024"
+  },
+  {
+    "code": "64872141",
+    "name": "LAMI KN BIRYANI 20G RMC 2021 NEW ULCL"
+  },
+  {
+    "code": "69772139",
+    "name": "CRT KN BIRIYANI 20G X 24 NEW ULCL"
+  },
+  {
+    "code": "94010495",
+    "name": "Knorr Maldive Fish Powder Mix 40g"
+  },
+  {
+    "code": "69772141",
+    "name": "CLD DT KMF 40G X 12 NEW ULCL"
+  },
+  {
+    "code": "69772134",
+    "name": "LAMI KMF 40G NEW ULCL"
+  },
+  {
+    "code": "64872142",
+    "name": "CART KMF 40G REG2024"
+  },
+  {
+    "code": "69772130",
+    "name": "CART KMF 40G RMC 2021"
+  }
+]

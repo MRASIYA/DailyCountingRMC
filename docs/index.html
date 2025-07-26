@@ -232,8 +232,8 @@
 
             <div class="demo-notice">
                 <i class="fas fa-info-circle"></i> 
-                This is a static demo version hosted on GitHub Pages. 
-                The full functionality requires the Python backend.
+                This GitHub Pages version uses REAL data from your ISSUES.xlsx file! 
+                Data updates require re-running the conversion script.
             </div>
 
             <div class="form-container">
@@ -316,7 +316,7 @@
             </div>
 
             <h2 class="subtitle glow-text has-text-centered">
-                <i class="fas fa-chart-bar"></i> Current Stock Levels (Demo Data)
+                <i class="fas fa-chart-bar"></i> Current Stock Levels (From ISSUES.xlsx)
             </h2>
             <div class="table-container">
                 <table class="table is-bordered is-fullwidth">
@@ -372,14 +372,93 @@
     </section>
 
     <script>
-        // Demo data storage
-        let stockData = {
-            'MAT001': { received: 150, issued: 120, returned: 5 },
-            'MAT002': { received: 200, issued: 180, returned: 10 },
-            'MAT003': { received: 75, issued: 60, returned: 2 },
-            'MAT004': { received: 50, issued: 45, returned: 3 },
-            'MAT005': { received: 1000, issued: 800, returned: 20 }
-        };
+        // Real data from ISSUES.xlsx
+        let materialsData = [];
+        let stockData = {};
+        let originalStockData = {};
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadExcelData();
+        });
+
+        async function loadExcelData() {
+            try {
+                // Load materials data
+                const materialsResponse = await fetch('materials.json');
+                materialsData = await materialsResponse.json();
+                
+                // Load stock data
+                const stockResponse = await fetch('stock_data.json');
+                const stockArray = await stockResponse.json();
+                
+                // Convert stock array to object for easier access
+                stockData = {};
+                originalStockData = {};
+                stockArray.forEach(item => {
+                    const key = item.material_code;
+                    stockData[key] = {
+                        received: item.received,
+                        issued: item.issued,
+                        returned: item.returned
+                    };
+                    // Keep original data for reference
+                    originalStockData[key] = {
+                        received: item.received,
+                        issued: item.issued,
+                        returned: item.returned
+                    };
+                });
+                
+                // Update UI with real data
+                updateMaterialDropdown();
+                updateStockTable();
+                
+                // Load metadata
+                const metadataResponse = await fetch('metadata.json');
+                const metadata = await metadataResponse.json();
+                document.getElementById('save-status').textContent = `📊 Data from ${metadata.data_source} (${metadata.total_materials} materials)`;
+                
+            } catch (error) {
+                console.error('Error loading Excel data:', error);
+                // Fallback to demo data if JSON files not found
+                initDemoData();
+            }
+        }
+
+        function initDemoData() {
+            // Fallback demo data if JSON files are not available
+            materialsData = [
+                { code: 'MAT001', name: 'Steel Bars' },
+                { code: 'MAT002', name: 'Concrete Mix' },
+                { code: 'MAT003', name: 'Wood Planks' },
+                { code: 'MAT004', name: 'Paint' },
+                { code: 'MAT005', name: 'Screws' }
+            ];
+            
+            stockData = {
+                'MAT001': { received: 150, issued: 120, returned: 5 },
+                'MAT002': { received: 200, issued: 180, returned: 10 },
+                'MAT003': { received: 75, issued: 60, returned: 2 },
+                'MAT004': { received: 50, issued: 45, returned: 3 },
+                'MAT005': { received: 1000, issued: 800, returned: 20 }
+            };
+            
+            updateMaterialDropdown();
+            updateStockTable();
+        }
+
+        function updateMaterialDropdown() {
+            const select = document.getElementById('material-select');
+            select.innerHTML = '';
+            
+            materialsData.forEach(material => {
+                const option = document.createElement('option');
+                option.value = `${material.code}|${material.name}`;
+                option.textContent = `${material.code} - ${material.name}`;
+                select.appendChild(option);
+            });
+        }
 
         // Handle form submission
         document.getElementById('transaction-form').addEventListener('submit', function(e) {
@@ -397,7 +476,7 @@
             const materialCode = materialSelect.value.split('|')[0];
             const materialName = materialSelect.value.split('|')[1];
             
-            // Update demo data
+            // Update local data (demo functionality)
             if (stockData[materialCode]) {
                 switch(transactionType) {
                     case 'Issues':
@@ -418,7 +497,7 @@
             // Show success message
             const successMessage = document.getElementById('success-message');
             const successText = document.getElementById('success-text');
-            successText.textContent = `Updated ${transactionType}: ${quantity} units of ${materialName}`;
+            successText.textContent = `Updated ${transactionType}: ${quantity} units of ${materialName} (Local Demo Only)`;
             successMessage.classList.remove('is-hidden');
             
             // Hide success message after 3 seconds
@@ -433,48 +512,58 @@
             const indicator = document.getElementById('auto-save-indicator');
             const status = document.getElementById('save-status');
             
-            status.innerHTML = '💾 Demo: Simulating save...';
+            status.innerHTML = '💾 Updating local demo data...';
             indicator.className = 'auto-save-indicator notification is-warning';
             indicator.classList.remove('is-hidden');
             
             setTimeout(function() {
-                status.innerHTML = '✓ Demo: Data updated locally';
-                indicator.className = 'auto-save-indicator notification is-success';
+                status.innerHTML = '✓ Local demo updated (Excel file unchanged)';
+                indicator.className = 'auto-save-indicator notification is-info';
                 
                 setTimeout(function() {
                     indicator.classList.add('is-hidden');
-                }, 3000);
+                }, 4000);
             }, 1000);
         });
 
         function updateStockTable() {
             const tbody = document.getElementById('stock-table-body');
-            const materials = [
-                { code: 'MAT001', name: 'Steel Bars' },
-                { code: 'MAT002', name: 'Concrete Mix' },
-                { code: 'MAT003', name: 'Wood Planks' },
-                { code: 'MAT004', name: 'Paint' },
-                { code: 'MAT005', name: 'Screws' }
-            ];
-            
             tbody.innerHTML = '';
-            materials.forEach(material => {
+            
+            // Display first 20 materials or all if less than 20
+            const displayMaterials = materialsData.slice(0, 20);
+            
+            displayMaterials.forEach(material => {
                 const data = stockData[material.code];
-                const row = `
-                    <tr>
-                        <td><strong>${material.code}</strong></td>
-                        <td>${material.name}</td>
-                        <td class="has-text-success"><strong>${data.received}</strong></td>
-                        <td class="has-text-danger"><strong>${data.issued}</strong></td>
-                        <td class="has-text-warning"><strong>${data.returned}</strong></td>
+                if (data) {
+                    const row = `
+                        <tr>
+                            <td><strong>${material.code}</strong></td>
+                            <td>${material.name}</td>
+                            <td class="has-text-success"><strong>${data.received}</strong></td>
+                            <td class="has-text-danger"><strong>${data.issued}</strong></td>
+                            <td class="has-text-warning"><strong>${data.returned}</strong></td>
+                        </tr>
+                    `;
+                    tbody.innerHTML += row;
+                }
+            });
+            
+            // Add info row if there are more materials
+            if (materialsData.length > 20) {
+                const infoRow = `
+                    <tr style="background: #f0f8ff;">
+                        <td colspan="5" class="has-text-centered">
+                            <em>Showing first 20 of ${materialsData.length} materials. Full data available in Excel file.</em>
+                        </td>
                     </tr>
                 `;
-                tbody.innerHTML += row;
-            });
+                tbody.innerHTML += infoRow;
+            }
         }
 
         function showDownloadDemo() {
-            alert('This is a demo version. In the full application, this would download the actual ISSUES.xlsx file with your data.');
+            window.open('issues_backup.csv', '_blank');
         }
     </script>
 </body>
