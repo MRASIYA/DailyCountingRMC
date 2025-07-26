@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  daily-counting:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: daily-counting-app
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./ISSUES.xlsx:/app/ISSUES.xlsx
+      - ./data:/app/data
+    environment:
+      - FLASK_ENV=production
+      - PYTHONPATH=/app
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Add a reverse proxy
+  nginx:
+    image: nginx:alpine
+    container_name: daily-counting-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - daily-counting
+    restart: unless-stopped
+    profiles:
+      - production
+
+networks:
+  default:
+    name: daily-counting-network
+
+volumes:
+  data:
+    driver: local
