@@ -148,9 +148,15 @@ def index():
     stock_data = get_current_stock()
     return render_template('index.html', materials=materials, stock_data=stock_data)
 
-@app.route('/submit_transaction', methods=['POST'])
+@app.route('/submit_transaction', methods=['GET', 'POST'])
 def submit_transaction():
     """Handle form submission"""
+    # Handle GET requests with a helpful message
+    if request.method == 'GET':
+        flash('Please use the form to submit transactions', 'info')
+        return redirect(url_for('index'))
+    
+    # Handle POST requests (form submissions)
     try:
         material_selection = request.form['material']
         transaction_type = request.form['transaction_type']
