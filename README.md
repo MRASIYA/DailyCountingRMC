@@ -1,6 +1,43 @@
-# Daily Counting - Inventory Management Web Application
+# 📋 Daily Counting - Inventory Management System
 
-A modern Flask web application for managing daily inventory transactions with an intuitive user interface.
+[![Build and Test](https://github.com/MRASIYA/DailyCountingRMC/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/MRASIYA/DailyCountingRMC/actions/workflows/build-and-test.yml)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://mrasiya.github.io/DailyCountingRMC/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue)](https://github.com/MRASIYA/DailyCountingRMC/blob/main/Dockerfile)
+[![Excel Integration](https://img.shields.io/badge/Excel-Connected-orange)](https://github.com/MRASIYA/DailyCountingRMC)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+A professional Flask web application that directly connects to Excel files for real-time inventory management and daily stock tracking.
+
+## 🌐 Live Demo
+
+**GitHub Pages**: https://mrasiya.github.io/DailyCountingRMC/
+
+## 🚀 Quick Start
+
+### Method 1: Direct Excel Integration (Recommended)
+```bash
+git clone https://github.com/MRASIYA/DailyCountingRMC.git
+cd DailyCountingRMC
+pip install -r requirements.txt
+
+# Run the application
+run_excel_app.bat
+# Or: python excel_app.py
+
+# Open browser: http://localhost:5000
+```
+
+### Method 2: Docker Deployment
+```bash
+docker-compose up -d
+# Access at: http://localhost:5000
+```
+
+### Method 3: Standalone HTML
+```bash
+# Simply open local_app.html in any browser
+# Drag & drop your ISSUES.xlsx file to start
+```
 
 ## Features
 
@@ -164,6 +201,68 @@ The application provides user-friendly error messages for:
 - Excel format problems
 - Download failures
 
+## 🔧 Build & Deployment
+
+### Local Development
+```bash
+# 1. Clone repository
+git clone https://github.com/MRASIYA/DailyCountingRMC.git
+cd DailyCountingRMC
+
+# 2. Create virtual environment (optional but recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Run application
+python excel_app.py
+
+# 5. Open browser
+# http://localhost:5000
+```
+
+### Production Deployment
+
+#### Docker Deployment
+```bash
+# Build and run with Docker Compose
+docker-compose up -d
+
+# Or build manually
+docker build -t daily-counting .
+docker run -p 5000:5000 -v $(pwd)/ISSUES.xlsx:/app/ISSUES.xlsx daily-counting
+```
+
+#### GitHub Actions CI/CD
+- Automated testing on push/PR
+- Docker image building
+- GitHub Pages deployment
+- Quality checks and validation
+
+### Build Status
+- ✅ **Tests**: Automated testing with GitHub Actions
+- ✅ **Docker**: Production-ready containerization
+- ✅ **Pages**: Live demo deployment
+- ✅ **Excel**: Direct file integration testing
+
+## 📚 Documentation
+
+- **[Installation Guide](INSTALLATION_GUIDE.md)** - Detailed setup instructions
+- **[Excel Template Guide](EXCEL_TEMPLATE_GUIDE.md)** - Excel file format requirements
+- **[API Documentation](#api-endpoints)** - REST API reference
+- **[Docker Guide](Dockerfile)** - Container deployment
+
+### API Endpoints
+```
+GET  /                    # Main web interface
+GET  /api/materials       # Get all materials
+GET  /api/stock          # Get current stock levels
+POST /api/transaction    # Add new transaction
+GET  /download           # Download Excel file
+```
+
 ## Browser Compatibility
 - Chrome (recommended)
 - Firefox
@@ -171,12 +270,40 @@ The application provides user-friendly error messages for:
 - Edge
 - Mobile browsers
 
-## Future Enhancements
-- User authentication
+## 🎯 Project Structure
+```
+DailyCountingRMC/
+├── .github/
+│   └── workflows/
+│       └── build-and-test.yml    # CI/CD pipeline
+├── docs/                         # GitHub Pages files
+│   ├── index.html               # Static demo
+│   ├── materials.json           # Materials data
+│   └── stock_data.json          # Stock data
+├── templates/
+│   ├── index.html               # Original Flask template
+│   └── excel_interface.html     # Enhanced Excel interface
+├── DailyStockApp/               # Mobile app (Cordova)
+├── app.py                       # Original Flask app
+├── excel_app.py                 # Enhanced Excel integration
+├── local_app.html               # Standalone HTML version
+├── excel_to_json.py             # Excel to JSON converter
+├── requirements.txt             # Python dependencies
+├── Dockerfile                   # Docker configuration
+├── docker-compose.yml           # Docker Compose setup
+├── .gitignore                   # Git ignore rules
+└── ISSUES.xlsx                  # Your inventory data
+```
+
+## 🚀 Future Enhancements
+- User authentication system
 - Transaction history logging
-- Bulk operations
-- Advanced reporting
-- Data visualization
+- Bulk import/export operations
+- Advanced reporting dashboard
+- Real-time data visualization
+- Multi-user collaboration
+- Mobile app improvements
+- Cloud deployment options
 
 ## License
 This project is created for internal inventory management purposes.
