@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Counting - Inventory Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .main-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-title {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            font-weight: bold;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .auto-save-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            border-radius: 50px;
+            animation: fadeInScale 0.3s ease-out;
+        }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .form-container {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: formGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes formGlow {
+            from {
+                box-shadow: 
+                    0 10px 30px rgba(0, 0, 0, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            }
+            to {
+                box-shadow: 
+                    0 15px 35px rgba(102, 126, 234, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            }
+        }
+        
+        .custom-button {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .custom-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(40, 167, 69, 0.4);
+            background: linear-gradient(45deg, #34ce57, #2dd4aa);
+        }
+        
+        .download-button {
+            background: linear-gradient(45deg, #007bff, #6f42c1);
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 123, 255, 0.4);
+            background: linear-gradient(45deg, #0056b3, #5a32a3);
+        }
+        
+        .info-card {
+            background: linear-gradient(145deg, #e3f2fd, #bbdefb);
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.1);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+        
+        .table-container {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: tableSlideUp 0.6s ease-out 0.3s both;
+        }
+        
+        @keyframes tableSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .table th {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .table tbody tr:hover {
+            background: linear-gradient(45deg, #f8f9ff, #fff8f9);
+            transform: scale(1.01);
+            transition: all 0.2s ease;
+        }
+        
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+        }
+
+        .demo-notice {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+            }
+            to {
+                box-shadow: 0 0 30px rgba(254, 202, 87, 0.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Auto-save indicator -->
+    <div id="auto-save-indicator" class="auto-save-indicator notification is-success is-hidden">
+        <span id="save-status">✓ This is a demo version</span>
+    </div>
+
+    <section class="section">
+        <div class="container main-container">
+            <div class="has-text-centered" style="padding: 30px;">
+                <h1 class="hero-title floating-icon">
+                    <i class="fas fa-clipboard-list"></i> Daily Counting
+                </h1>
+                <p class="subtitle glow-text" style="font-size: 1.3rem; color: #666;">
+                    <i class="fas fa-magic"></i> Smart Inventory Management System
+                </p>
+                <p class="has-text-grey">
+                    <i class="fas fa-save"></i> Demo version - Data not actually saved
+                </p>
+            </div>
+
+            <div class="demo-notice">
+                <i class="fas fa-info-circle"></i> 
+                This is a static demo version hosted on GitHub Pages. 
+                The full functionality requires the Python backend.
+            </div>
+
+            <div class="form-container">
+                <form id="transaction-form">
+                <div class="field">
+                    <label class="label">Material</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="material" id="material-select">
+                                <option value="MAT001|Steel Bars">Steel Bars</option>
+                                <option value="MAT002|Concrete Mix">Concrete Mix</option>
+                                <option value="MAT003|Wood Planks">Wood Planks</option>
+                                <option value="MAT004|Paint">Paint</option>
+                                <option value="MAT005|Screws">Screws</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Transaction Type</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="transaction_type" id="transaction-type">
+                                <option value="Issues">Issues (→ Issued Column)</option>
+                                <option value="Received">Received (→ Received Column)</option>
+                                <option value="Return">Return (→ Return Column)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Quantity</label>
+                    <div class="control">
+                        <input class="input" type="number" step="any" name="quantity" id="quantity" required>
+                    </div>
+                </div>
+
+                <div class="field is-grouped is-grouped-centered">
+                    <div class="control">
+                        <button class="button custom-button is-large" type="submit">
+                            <span class="icon">
+                                <i class="fas fa-plus-circle"></i>
+                            </span>
+                            <span>ADD TO DAILY COUNTING</span>
+                        </button>
+                    </div>
+                    <div class="control">
+                        <a class="button download-button is-large" href="#" onclick="showDownloadDemo()">
+                            <span class="icon">
+                                <i class="fas fa-download"></i>
+                            </span>
+                            <span>DOWNLOAD EXCEL (DEMO)</span>
+                        </a>
+                    </div>
+                </div>
+            </form>
+            </div>
+
+            <!-- Information about where data is saved -->
+            <div class="notification info-card">
+                <p><strong><i class="fas fa-info-circle"></i> Smart Data Storage:</strong></p>
+                <p>In the full version, quantities are automatically updated in <strong>Sheet1</strong> of your <strong>ISSUES.xlsx</strong> file:</p>
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <p><i class="fas fa-arrow-right has-text-success"></i> <strong>Received</strong> → Received Column</p>
+                    </div>
+                    <div class="column">
+                        <p><i class="fas fa-arrow-right has-text-danger"></i> <strong>Issued</strong> → Issued Column</p>
+                    </div>
+                    <div class="column">
+                        <p><i class="fas fa-arrow-right has-text-warning"></i> <strong>Return</strong> → Return Column</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="success-message" class="notification is-success is-hidden">
+                <span id="success-text">Transaction recorded successfully!</span>
+            </div>
+
+            <h2 class="subtitle glow-text has-text-centered">
+                <i class="fas fa-chart-bar"></i> Current Stock Levels (Demo Data)
+            </h2>
+            <div class="table-container">
+                <table class="table is-bordered is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>Material Code</th>
+                        <th>Material Name</th>
+                        <th class="has-text-success">Received</th>
+                        <th class="has-text-danger">Issued</th>
+                        <th class="has-text-warning">Return</th>
+                    </tr>
+                </thead>
+                <tbody id="stock-table-body">
+                    <tr>
+                        <td><strong>MAT001</strong></td>
+                        <td>Steel Bars</td>
+                        <td class="has-text-success"><strong>150</strong></td>
+                        <td class="has-text-danger"><strong>120</strong></td>
+                        <td class="has-text-warning"><strong>5</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>MAT002</strong></td>
+                        <td>Concrete Mix</td>
+                        <td class="has-text-success"><strong>200</strong></td>
+                        <td class="has-text-danger"><strong>180</strong></td>
+                        <td class="has-text-warning"><strong>10</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>MAT003</strong></td>
+                        <td>Wood Planks</td>
+                        <td class="has-text-success"><strong>75</strong></td>
+                        <td class="has-text-danger"><strong>60</strong></td>
+                        <td class="has-text-warning"><strong>2</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>MAT004</strong></td>
+                        <td>Paint</td>
+                        <td class="has-text-success"><strong>50</strong></td>
+                        <td class="has-text-danger"><strong>45</strong></td>
+                        <td class="has-text-warning"><strong>3</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>MAT005</strong></td>
+                        <td>Screws</td>
+                        <td class="has-text-success"><strong>1000</strong></td>
+                        <td class="has-text-danger"><strong>800</strong></td>
+                        <td class="has-text-warning"><strong>20</strong></td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Demo data storage
+        let stockData = {
+            'MAT001': { received: 150, issued: 120, returned: 5 },
+            'MAT002': { received: 200, issued: 180, returned: 10 },
+            'MAT003': { received: 75, issued: 60, returned: 2 },
+            'MAT004': { received: 50, issued: 45, returned: 3 },
+            'MAT005': { received: 1000, issued: 800, returned: 20 }
+        };
+
+        // Handle form submission
+        document.getElementById('transaction-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const materialSelect = document.getElementById('material-select');
+            const transactionType = document.getElementById('transaction-type').value;
+            const quantity = parseFloat(document.getElementById('quantity').value);
+            
+            if (!quantity || quantity <= 0) {
+                alert('Please enter a valid quantity');
+                return;
+            }
+            
+            const materialCode = materialSelect.value.split('|')[0];
+            const materialName = materialSelect.value.split('|')[1];
+            
+            // Update demo data
+            if (stockData[materialCode]) {
+                switch(transactionType) {
+                    case 'Issues':
+                        stockData[materialCode].issued += quantity;
+                        break;
+                    case 'Received':
+                        stockData[materialCode].received += quantity;
+                        break;
+                    case 'Return':
+                        stockData[materialCode].returned += quantity;
+                        break;
+                }
+            }
+            
+            // Update table
+            updateStockTable();
+            
+            // Show success message
+            const successMessage = document.getElementById('success-message');
+            const successText = document.getElementById('success-text');
+            successText.textContent = `Updated ${transactionType}: ${quantity} units of ${materialName}`;
+            successMessage.classList.remove('is-hidden');
+            
+            // Hide success message after 3 seconds
+            setTimeout(() => {
+                successMessage.classList.add('is-hidden');
+            }, 3000);
+            
+            // Clear quantity field
+            document.getElementById('quantity').value = '';
+            
+            // Show auto-save indicator
+            const indicator = document.getElementById('auto-save-indicator');
+            const status = document.getElementById('save-status');
+            
+            status.innerHTML = '💾 Demo: Simulating save...';
+            indicator.className = 'auto-save-indicator notification is-warning';
+            indicator.classList.remove('is-hidden');
+            
+            setTimeout(function() {
+                status.innerHTML = '✓ Demo: Data updated locally';
+                indicator.className = 'auto-save-indicator notification is-success';
+                
+                setTimeout(function() {
+                    indicator.classList.add('is-hidden');
+                }, 3000);
+            }, 1000);
+        });
+
+        function updateStockTable() {
+            const tbody = document.getElementById('stock-table-body');
+            const materials = [
+                { code: 'MAT001', name: 'Steel Bars' },
+                { code: 'MAT002', name: 'Concrete Mix' },
+                { code: 'MAT003', name: 'Wood Planks' },
+                { code: 'MAT004', name: 'Paint' },
+                { code: 'MAT005', name: 'Screws' }
+            ];
+            
+            tbody.innerHTML = '';
+            materials.forEach(material => {
+                const data = stockData[material.code];
+                const row = `
+                    <tr>
+                        <td><strong>${material.code}</strong></td>
+                        <td>${material.name}</td>
+                        <td class="has-text-success"><strong>${data.received}</strong></td>
+                        <td class="has-text-danger"><strong>${data.issued}</strong></td>
+                        <td class="has-text-warning"><strong>${data.returned}</strong></td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
+        }
+
+        function showDownloadDemo() {
+            alert('This is a demo version. In the full application, this would download the actual ISSUES.xlsx file with your data.');
+        }
+    </script>
+</body>
+</html>
